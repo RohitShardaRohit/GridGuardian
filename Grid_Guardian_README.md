@@ -49,9 +49,3 @@ This project was built as part of hands-on security lab work to simulate **real-
 - `setup_encrypt_config.py` — encrypts config into `config.enc`
 - `README.md` — this overview
 - `SETUP.md` — full installation and usage guide
-
----
-
-## Demo
-
-➡️ A demo video will be added here showing file quarantine in action.
