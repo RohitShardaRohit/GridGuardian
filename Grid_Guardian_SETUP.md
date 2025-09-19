@@ -62,11 +62,11 @@ python3 setup_encrypt_config.py
 This writes `config.enc`. Do **not** commit this file or the `FILE_KEY`.
 
 Config includes:
-- Ubuntu IPs (`192.168.56.x`, `10.0.2.x`)
+- Ubuntu IPs (`192.168.xx.x`, `10.0.x.x`)
 - Username
 - SSH key path
-- Protected path: `/home/rohit/Desktop/secure_files`
-- Quarantine path: `/home/rohit/Desktop/quarantine`
+- Protected path: `/home/<username>/Desktop/secure_files`
+- Quarantine path: `/home/<username>/Desktop/quarantine`
 
 ---
 
@@ -85,7 +85,7 @@ chmod 700 ~/Desktop/secure_files
 To avoid repeated password prompts, add this line with `visudo` (replace `rohit` with your user):
 
 ```
-rohit ALL=(ALL) NOPASSWD: /sbin/auditctl, /usr/bin/tail, /usr/bin/mv, /usr/bin/logger
+<username> ALL=(ALL) NOPASSWD: /sbin/auditctl, /usr/bin/tail, /usr/bin/mv, /usr/bin/logger
 ```
 
 ---
@@ -115,13 +115,13 @@ echo "secret" > ~/Desktop/secure_files/confidential.txt
 
 From another machine:
 ```bash
-scp rohit@<ubuntu-ip>:~/Desktop/secure_files/confidential.txt /tmp/
+scp <username>@<ubuntu-ip>:~/Desktop/secure_files/confidential.txt /tmp/
 ```
 
 Guardian output:
 ```
-[guardian] hit: ['/home/rohit/Desktop/secure_files/confidential.txt']
-[guardian] quarantined: /home/rohit/Desktop/secure_files/confidential.txt -> /home/rohit/Desktop/quarantine/confidential.txt.<timestamp>
+[guardian] hit: ['/home/<username>/Desktop/secure_files/confidential.txt']
+[guardian] quarantined: /home/<username>/Desktop/secure_files/confidential.txt -> /home/<username>/Desktop/quarantine/confidential.txt.<timestamp>
 ```
 
 ---
